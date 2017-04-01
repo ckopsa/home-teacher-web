@@ -1,0 +1,24 @@
+<md-toolbar color="primary">
+    Home Teacher
+    <span class="app-toolbar-filler"></span>
+    <button md-button id="logout-button" (click)="logout()">Logout</button>
+</md-toolbar>
+<div class="app-content">
+    <md-card style="width: 600px; margin: auto;">
+        <md-card-title>Hello, {{userEmail}}!</md-card-title>
+        <form (ngSubmit)="ping()" #pingForm="ngForm">
+            <md-card-content>
+                <p>{{ (item | async)?.text }}</p>
+            </md-card-content>
+            <md-card-actions align="center">
+                <input md-input type="text" id="pingText"
+                       [(ngModel)]="pingText" name="pingText"
+                       style="width: 66%"
+                       placeholder="Text to ping server"
+                       required
+                />
+                <button md-raised-button color="accent" type="submit" [disabled]="!pingForm.form.valid">Submit</button>
+            </md-card-actions>
+        </form>
+    </md-card>
+</div>
