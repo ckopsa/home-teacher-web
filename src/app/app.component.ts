@@ -22,7 +22,6 @@ export class AppComponent {
             else {
                 // user not logged in
                 this.user = {};
-                this.router.navigate(["login"]);
             }
         });
     }

@@ -10,10 +10,12 @@ import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 export class LoginComponent implements OnInit {
     email = '';
     password = '';
+    loading = false;
     constructor(public af: AngularFire,
                 public router: Router) {
     }
     login() {
+        this.loading = true;
         this.af.auth.login({
             email: this.email,
             password: this.password,
@@ -21,14 +23,28 @@ export class LoginComponent implements OnInit {
         {
             provider: AuthProviders.Password,
             method: AuthMethods.Password,
-        });
+        }).then(
+            response => {
+                this.router.navigate(['home'])
+            },
+            error => {
+                this.loading = false;
+            });
     }
 
     loginGoogle() {
+        this.loading = true;
         this.af.auth.login({
             provider: AuthProviders.Google,
             method: AuthMethods.Redirect
-        });
+        }).then(
+            response => {
+                this.router.navigate(['home'])
+            },
+            error => {
+                this.loading = false;
+            });
+;
     }
 
     logout() {
