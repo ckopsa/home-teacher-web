@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
             provider: AuthProviders.Password,
             method: AuthMethods.Password,
         });
-        this.router.navigate(["home"]);
     }
 
     loginGoogle() {
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
             provider: AuthProviders.Google,
             method: AuthMethods.Redirect
         });
-        this.router.navigate(["home"]);
     }
 
     logout() {
@@ -38,10 +36,9 @@ export class LoginComponent implements OnInit {
     }
 
     signup() {
-        this.router.navigate(["signup"]);
+        this.router.navigate(['signup']);
     }
 
     ngOnInit() {
     }
-
 }

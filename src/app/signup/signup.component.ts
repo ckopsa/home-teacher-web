@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     }
 
     signup() {
-        this.af.auth.createUser({email: this.email, password: this.password});
+        this.af.auth.createUser({email: this.email, password: this.password}).then(() => this.router.navigate(["home"]));
     }
 
     cancel() {

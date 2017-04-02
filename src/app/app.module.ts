@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import 'hammerjs';
 import { SignupComponent } from './signup/signup.component';
+import { LoginGuard } from './login.guard';
 
 // Must export the config
 export const firebaseConfig = {
@@ -25,9 +26,9 @@ export const firebaseConfig = {
 };
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'signup', component: SignupComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent, canActivate: [LoginGuard] },
+    { path: 'signup', component: SignupComponent },
 ];
 
 @NgModule({
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
         AppComponent,
         LoginComponent,
         HomeComponent,
-        SignupComponent
+        SignupComponent,
     ],
     imports: [
         BrowserModule,
@@ -47,7 +48,9 @@ const appRoutes: Routes = [
         NoopAnimationsModule,
         MaterialModule
     ],
-    providers: [],
+    providers: [
+        LoginGuard
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

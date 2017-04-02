@@ -24,7 +24,7 @@
             <md-card-actions align="center">
                 <button md-raised-button type="submit" [disabled]="!loginForm.form.valid">Submit</button>
                 <button md-raised-button type="button" (click)="signup()">Sign Up</button>
-                <img src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png" (click)="loginGoogle()"/>
+                <button md-raised-button type="button" (click)="loginGoogle()">Google Sign In</button>
             </md-card-actions>
         </form>
     </md-card>
